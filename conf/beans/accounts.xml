@@ -34,7 +34,7 @@
                 <entry key="process.outputSuccess" value="status/success_accounts.csv" />
                 <entry key="sfdc.entity" value="Account"/>
                 <entry key="sfdc.loadBatchSize" value="1"/>
-                <entry key="sfdc.externalIdField" value="gbutt__External_ID__c" />
+                <entry key="sfdc.externalIdField" value="External_ID__c" />
             </map>
         </property>
     </bean>

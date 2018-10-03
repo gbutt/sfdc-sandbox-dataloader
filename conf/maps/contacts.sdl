@@ -1,5 +1,5 @@
-ID=gbutt__External_ID__c
+ID=External_ID__c
 FIRSTNAME=FirstName
 LASTNAME=LastName
 EMAIL=Email
-ACCOUNTID=Account\:gbutt__External_ID__c
+ACCOUNTID=Account\:External_ID__c

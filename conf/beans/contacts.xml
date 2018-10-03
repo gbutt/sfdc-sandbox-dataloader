@@ -34,7 +34,7 @@
                 <entry key="process.outputError" value="status/errors_contacts.csv" />
                 <entry key="process.outputSuccess" value="status/success_contacts.csv" />
                 <entry key="sfdc.entity" value="Contact"/>
-                <entry key="sfdc.externalIdField" value="gbutt__External_ID__c" />
+                <entry key="sfdc.externalIdField" value="External_ID__c" />
             </map>
         </property>
     </bean>
