@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+    <appender name="PROGRESS" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d [%t] - %m%n"/>
+        </layout>       
+    </appender>
+    
+    <category name="org.apache.log4j.xml">
+        <priority value="warn" />
+    </category>
+    
+    <logger name="org.apache" >
+            <level value ="warn" />
+    </logger>
+
+    <category name="com.salesforce.dataloader.action.progress">
+        <priority value="info" />
+    </category>
+    <category name="com.salesforce.dataloader.controller">
+        <priority value="warn" />
+    </category>
+    <category name="com.salesforce.dataloader.process">
+        <priority value="warn" />
+    </category>
+    
+    <root>
+        <priority value ="warn" />
+        <appender-ref ref="PROGRESS" />
+    </root>
+</log4j:configuration>

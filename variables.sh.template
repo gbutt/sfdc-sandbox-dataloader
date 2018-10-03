@@ -1,0 +1,7 @@
+# extract org variables
+SF_SRC_USER=mojo.jojo@powerpuff.grr
+SF_SRC_SANDBOX=stage
+
+# import org variables
+SF_DEST_USER=mojo.jojo@powerpuff.grr
+SF_DEST_SANDBOX= #devjojo

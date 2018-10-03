@@ -1,0 +1,41 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="extract"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <property name="name" value="contactsExtract"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="dataAccess.name" value="csv/contacts.csv"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="sfdc.entity" value="Contact"/>
+                <entry key="sfdc.extractionSOQL" value="SELECT Id
+                    , FirstName
+                    , LastName
+                    , Email
+                    , AccountId
+                FROM Contact
+                WHERE Account.Name IN (REPLACE_ME)"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="import"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <property name="name" value="contacts_Import"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="dataAccess.name" value="csv/contacts.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="process.mappingFile" value="maps/contacts.sdl"/>
+                <entry key="process.operation" value="upsert"/>
+                <entry key="process.outputError" value="status/errors_contacts.csv" />
+                <entry key="process.outputSuccess" value="status/success_contacts.csv" />
+                <entry key="sfdc.entity" value="Contact"/>
+                <entry key="sfdc.externalIdField" value="gbutt__External_ID__c" />
+            </map>
+        </property>
+    </bean>
+</beans>

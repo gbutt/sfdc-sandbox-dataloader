@@ -1,0 +1,41 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="extract"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <property name="name" value="accountsExtract"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="dataAccess.name" value="csv/accounts.csv"/>
+                <entry key="dataAccess.type" value="csvWrite"/>
+                <entry key="process.operation" value="extract"/>
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.extractionSOQL" value="SELECT Id
+                    , Name
+                    , ParentId
+                FROM Account
+                WHERE Name IN (REPLACE_ME)
+                ORDER BY ParentId ASC"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="import"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <property name="name" value="accounts_Import"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="dataAccess.name" value="csv/accounts.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="process.mappingFile" value="maps/accounts.sdl"/>
+                <entry key="process.operation" value="upsert"/>
+                <entry key="process.outputError" value="status/errors_accounts.csv" />
+                <entry key="process.outputSuccess" value="status/success_accounts.csv" />
+                <entry key="sfdc.entity" value="Account"/>
+                <entry key="sfdc.loadBatchSize" value="1"/>
+                <entry key="sfdc.externalIdField" value="gbutt__External_ID__c" />
+            </map>
+        </property>
+    </bean>
+</beans>

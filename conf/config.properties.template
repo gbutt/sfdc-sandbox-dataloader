@@ -1,0 +1,17 @@
+sfdc.endpoint=https://test.salesforce.com
+sfdc.username=
+sfdc.password=
+process.encryptionKeyFile=key.txt
+
+sfdc.timeoutSecs=600
+sfdc.loadBatchSize=200
+sfdc.extractionRequestSize=2000
+dataAccess.readBatchSize=2000
+dataAccess.writeBatchSize=200
+
+sfdc.debugMessagesFile=sfdcSoapTrace.log
+sfdc.debugMessages=false
+
+process.enableLastRunOutput=false
+process.enableExtractStatusOutput=false
+process.statusOutputDirectory=status
